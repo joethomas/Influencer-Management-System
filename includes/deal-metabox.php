@@ -18,10 +18,10 @@ add_action( 'admin_init', 'joe_ims_add_deal_meta_box' );
  */
 function joe_ims_display_deal_meta_box( $deal ) {
 
-	$terms.     = get_terms( 'deal_influencer', array( 'hide_empty' => false ) );
+	$terms      = get_terms( 'deal_influencer', array( 'hide_empty' => false ) );
 
 	$deal       = get_post();
-	$influencer = wp_get_object_terms( $post->ID, 'deal_influencer', array( 'orderby' => 'name', 'order' => 'ASC' ) );
+	$influencer = wp_get_object_terms( $deal->ID, 'deal_influencer', array( 'orderby' => 'name', 'order' => 'ASC' ) );
 	$name       = '';
 
 	if ( ! is_wp_error( $influencer ) ) {
@@ -43,7 +43,7 @@ function joe_ims_display_deal_meta_box( $deal ) {
  * Save Deal Post Influencer
  * @since 1.0.0
  */
-function joe_ims_save_deal_influencer_meta_box( $post_id ) {
+function joe_ims_save_deal_influencer_meta_box( $deal_id ) {
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 		return;
 	}
@@ -56,15 +56,15 @@ function joe_ims_save_deal_influencer_meta_box( $post_id ) {
 	if ( empty( $influencer ) ) {
 		// unhook this function so it doesn't loop infinitely
 		remove_action( 'save_deal_influencer', 'save_deal_influencer_meta_box' );
-		$postdata = array(
-			'ID'          => $post_id,
+		$dealdata = array(
+			'ID'          => $deal_id,
 			'post_status' => 'draft',
 		);
-		wp_update_post( $postdata );
+		wp_update_post( $dealdata );
 	} else {
 		$term = get_term_by( 'name', $influencer, 'deal_influencer' );
 		if ( ! empty( $term ) && ! is_wp_error( $term ) ) {
-			wp_set_object_terms( $post_id, $term->term_id, 'deal_influencer', false );
+			wp_set_object_terms( $deal_id, $term->term_id, 'deal_influencer', false );
 		}
 	}
 }
@@ -78,9 +78,9 @@ add_action( 'save_deal_influencer', 'joe_ims_save_deal_influencer_meta_box' );
  *
  * @param WP_Post The current post object.
  */
-function joe_ims_show_required_field_error_msg( $post ) {
-	if ( 'deal' === get_post_type( $post ) && 'auto-draft' !== get_post_status( $post ) ) {
-	    $influencer = wp_get_object_terms( $post->ID, 'deal_influencer', array( 'orderby' => 'name', 'order' => 'ASC' ) );
+function joe_ims_show_required_field_error_msg( $deal ) {
+	if ( 'deal' === get_post_type( $deal ) && 'auto-draft' !== get_post_status( $deal ) ) {
+	    $influencer = wp_get_object_terms( $deal->ID, 'deal_influencer', array( 'orderby' => 'name', 'order' => 'ASC' ) );
         if ( is_wp_error( $influencer ) || empty( $influencer ) ) {
 			printf(
 				'<div class="error below-h2"><p>%s</p></div>',

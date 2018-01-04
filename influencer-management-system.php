@@ -3,7 +3,7 @@
 	Plugin Name: Influencer Management System
 	Description: Manage your influencers and associated on-site marketing efforts by offering two new post types, Influencers and Deals, with associated meta boxes and taxonomies.
 	Plugin URI: https://github.com/joethomas/influencer-management-system
-	Version: 0.9.2
+	Version: 0.9.3
 	Author: Joe Thomas
 	Author URI: https://github.com/joethomas
 	License: GNU General Public License v3.0
