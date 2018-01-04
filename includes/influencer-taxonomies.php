@@ -33,8 +33,8 @@ function joe_ims_register_influencer_taxonomy_category() {
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'influencer_category', array( 'influencer' ), $args );

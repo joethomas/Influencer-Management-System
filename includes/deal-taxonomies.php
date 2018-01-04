@@ -33,8 +33,8 @@ function joe_ims_register_deal_taxonomy_category() {
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'deal_category', array( 'deal' ), $args );
@@ -73,12 +73,12 @@ function joe_ims_register_deal_taxonomy_influencer() {
 	);
 	$args = array(
 		'labels'                     => $labels,
-		'hierarchical'               => false,
+		'hierarchical'               => true,
 		'public'                     => true,
 		'show_ui'                    => true,
 		'show_admin_column'          => true,
-		'show_in_nav_menus'          => true,
-		'show_tagcloud'              => true,
+		'show_in_nav_menus'          => false,
+		'show_tagcloud'              => false,
 		'rewrite'                    => $rewrite,
 	);
 	register_taxonomy( 'deal_influencer', array( 'deal' ), $args );
