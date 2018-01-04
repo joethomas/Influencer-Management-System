@@ -1,12 +1,12 @@
 <?php
 /**
- * Register Partner Category Taxonomy
+ * Register Influencer Category Taxonomy
  * @since 1.1.1
  */
-function joe_ims_register_partner_taxonomy_category() {
+function joe_ims_register_influencer_taxonomy_category() {
 
 	$labels = array(
-		'name'                       => _x( 'Partner Categories', 'Taxonomy General Name', 'influencer-ms' ),
+		'name'                       => _x( 'Influencer Categories', 'Taxonomy General Name', 'influencer-ms' ),
 		'singular_name'              => _x( 'Category', 'Taxonomy Singular Name', 'influencer-ms' ),
 		'menu_name'                  => __( 'Categories', 'influencer-ms' ),
 		'all_items'                  => __( 'All Categories', 'influencer-ms' ),
@@ -23,7 +23,7 @@ function joe_ims_register_partner_taxonomy_category() {
 		'not_found'                  => __( 'Not Found', 'influencer-ms' ),
 	);
 	$rewrite = array(
-		'slug'                       => 'partner-category',
+		'slug'                       => 'influencer-category',
 		'with_front'                 => true,
 		'hierarchical'               => true,
 	);
@@ -37,10 +37,10 @@ function joe_ims_register_partner_taxonomy_category() {
 		'show_tagcloud'              => true,
 		'rewrite'                    => $rewrite,
 	);
-	register_taxonomy( 'partner_category', array( 'partner' ), $args );
+	register_taxonomy( 'influencer_category', array( 'influencer' ), $args );
 
 }
 
-add_action( 'init', 'joe_ims_register_partner_taxonomy_category', 0 );
+add_action( 'init', 'joe_ims_register_influencer_taxonomy_category', 0 );
 
 ?>
