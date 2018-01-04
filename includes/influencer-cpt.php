@@ -41,7 +41,7 @@ function joe_ims_register_influencer_post_type() {
 		'hierarchical'        => false,
 		'public'              => true,
 		'show_ui'             => true,
-		'show_in_menu'        => current_user_can( 'edit_pages' ) ? 'edit.php?post_type=deal' : false,
+		'show_in_menu'        => current_user_can( 'edit_pages' ) ? true : false,
 		'show_in_nav_menus'   => false,
 		'show_in_admin_bar'   => current_user_can( 'edit_pages' ) ? true : false,
 		'menu_position'       => 5,
