@@ -40,7 +40,18 @@ function joe_ims_register_influencer_taxonomy_category() {
 	register_taxonomy( 'influencer_category', array( 'influencer' ), $args );
 
 }
-
 add_action( 'init', 'joe_ims_register_influencer_taxonomy_category', 0 );
 
+
+/**
+ * Add Influencer Category taxonomy menu item to Deal submenu
+ *
+ * @since 1.0.0
+ */
+function joe_ims_add_influencer_category_tax_to_deal_submenu() {
+
+	add_submenu_page( 'edit.php?post_type=deal', 'Influencer Categories', 'Influencer Categories', 'manage_options', 'edit-tags.php?taxonomy=influencer_category&post_type=influencer' );
+
+}
+add_action( 'admin_menu', 'joe_ims_add_influencer_category_tax_to_deal_submenu' );
 ?>
